@@ -1,54 +1,38 @@
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.Timer;
 
-public class LifeApp {
+public class Game {
 
     private LifePanel lp;
-    private JButton goBtn;
-    private JButton clearBtn;
-    private JButton resetBtn;
+    private JButton menu;
 
-    public static void main(String[] args) { LifeApp a = new LifeApp();}
+    public static void main(String[] args) { Game a = new Game();}
 
-    public LifeApp() { buildGUI(); }
+    public Game() { buildGUI(); }
 
     final void buildGUI() {
 
         JFrame f = new JFrame("Life");
 
 
-        goBtn = new JButton("Go!");
+        menu = new JButton("Menu");
 
-        goBtn.addActionListener(new ActionListener() {
+        menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-
-        clearBtn = new JButton("Clear");
-        clearBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
 
         lp = new LifePanel();
 
         JPanel ctrlPanel = new JPanel(new GridLayout(1, 4));
-        ctrlPanel.add(goBtn);
-        ctrlPanel.add(clearBtn);
+        ctrlPanel.add(menu);
 
         f.add(lp, BorderLayout.CENTER);
         f.add(ctrlPanel, BorderLayout.SOUTH);
