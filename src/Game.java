@@ -11,7 +11,7 @@ public class Game {
     private LifePanel lp;
     private JButton menu;
 
-    public static void main(String[] args) { Game a = new Game();}
+   public static void main(String[] args) { Game a = new Game();}
 
     public Game() { buildGUI(); }
 

@@ -1,29 +1,37 @@
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
-public class Menu {
+import static java.awt.FlowLayout.CENTER;
 
-    private JPanel lp1;
+public class Menu extends JFrame{
 
-    private JButton game;
-    private JButton ranking;
-    private JButton exit;
 
-    public static void main(String[] args) { Game a = new Game();}
+    public static void main(String[] args) { Menu a = new Menu();}
 
-    public Menu() { buildGUI(); }
+    public Menu() {
 
-    final void buildGUI() {
+        JFrame f1 = new JFrame("Draw that thing");
 
-        JFrame f = new JFrame("Draw that thing");
+        JLabel label;
+        JLabel background;
+        Icon logoImage = new ImageIcon(getClass().getResource("back.jpg"));
+        label = new JLabel(logoImage);
+        label.setSize(600, 400);
 
+
+        JButton game;
+        JButton ranking;
+        JButton exit;
+        Container content = getContentPane();
+        content.setLayout(new GridLayout(4,1));
+        JPanel menupanel = new JPanel(new GridLayout(3, 1));
+        menupanel.setPreferredSize(new Dimension(100, 90));
 
         game = new JButton("New game");
+        game.setPreferredSize(new Dimension(40, 40));
         game.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,6 +40,7 @@ public class Menu {
         });
 
         ranking = new JButton("Ranking");
+        ranking.setPreferredSize(new Dimension(40, 40));
         ranking.addActionListener(new ActionListener() {
 
             @Override
@@ -41,6 +50,7 @@ public class Menu {
         });
 
         exit = new JButton("Exit");
+        exit.setPreferredSize(new Dimension(40, 40));
         exit.addActionListener(new ActionListener() {
 
             @Override
@@ -48,18 +58,24 @@ public class Menu {
 
             }
         });
+//        content.add(game);
+//        content.add(ranking);
+//        content.add(exit);
+//        content.setPreferredSize(new Dimension(100, 80));
+
+        menupanel.add(game);
+        menupanel.add(ranking);
+        menupanel.add(exit);
+        //menupanel.setBorder(BorderFactory.createEmptyBorder(5, 100, 5, 100));
 
 
-
-        JPanel ctrlPanel = new JPanel(new GridLayout(3, 1));
-        ctrlPanel.add(game);
-        ctrlPanel.add(ranking);
-        ctrlPanel.add(exit);
-
-        f.add(ctrlPanel, BorderLayout.CENTER);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.pack();
-        f.setVisible(true);
+        f1.add(label);
+        f1.add(menupanel, BorderLayout.PAGE_END);
+        f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f1.setPreferredSize(new Dimension(800, 700));
+        f1.pack();
+        f1.setVisible(true);
+        f1.setResizable(false);
     }
 }
 
