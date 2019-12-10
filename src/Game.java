@@ -1,5 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -8,28 +7,24 @@ import javax.swing.JPanel;
 
 public class Game {
 
-    private LifePanel lp;
+    private GridPanel lp;
     private JButton menu;
 
-   public static void main(String[] args) { Game a = new Game();}
-
     public Game() { buildGUI(); }
+    JFrame f = new JFrame("Life");
+
 
     final void buildGUI() {
-
-        JFrame f = new JFrame("Life");
-
-
         menu = new JButton("Menu");
 
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                f.setVisible(false);
             }
         });
 
-        lp = new LifePanel();
+        lp = new GridPanel();
 
         JPanel ctrlPanel = new JPanel(new GridLayout(1, 4));
         ctrlPanel.add(menu);
@@ -38,6 +33,10 @@ public class Game {
         f.add(ctrlPanel, BorderLayout.SOUTH);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
+        f.setPreferredSize(new Dimension(800, 700));
+    }
+
+    public void setVisible(boolean b) {
         f.setVisible(true);
     }
 }

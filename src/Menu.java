@@ -8,7 +8,7 @@ import static java.awt.FlowLayout.CENTER;
 
 public class Menu extends JFrame{
 
-
+    Game f2 = new Game();
     public static void main(String[] args) { Menu a = new Menu();}
 
     public Menu() {
@@ -16,7 +16,6 @@ public class Menu extends JFrame{
         JFrame f1 = new JFrame("Draw that thing");
 
         JLabel label;
-        JLabel background;
         Icon logoImage = new ImageIcon(getClass().getResource("back.jpg"));
         label = new JLabel(logoImage);
         label.setSize(600, 400);
@@ -35,7 +34,8 @@ public class Menu extends JFrame{
         game.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Game f2 = new Game();
+                f2.setVisible(true);
             }
         });
 
@@ -55,13 +55,9 @@ public class Menu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                f1.setVisible(false);
             }
         });
-//        content.add(game);
-//        content.add(ranking);
-//        content.add(exit);
-//        content.setPreferredSize(new Dimension(100, 80));
 
         menupanel.add(game);
         menupanel.add(ranking);
@@ -78,4 +74,3 @@ public class Menu extends JFrame{
         f1.setResizable(false);
     }
 }
-
