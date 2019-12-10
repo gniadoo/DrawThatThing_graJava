@@ -50,6 +50,14 @@ public class Grid {
         letter_shape[22][16] = true;
         letter_shape[23][16] = true;
         letter_shape[24][16] = true;
+        letter_shape[18][11] = true;
+        letter_shape[23][11] = true;
+        letter_shape[17][12] = true;
+        letter_shape[16][13] = true;
+        letter_shape[24][12] = true;
+        letter_shape[25][13] = true;
+        letter_shape[19][10] = true;
+        letter_shape[22][10] = true;
     }
 
     public void setSquare(int x, int y) {
