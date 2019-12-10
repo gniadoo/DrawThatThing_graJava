@@ -6,15 +6,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
-public class LifePanel extends JPanel {
+import static java.awt.Color.RED;
+
+public class GridPanel extends JPanel {
 
     private int squareLen = 20;
-    private int sizeX = 37;
-    private int sizeY = 21;
-    private LifeGrid lg = new LifeGrid(sizeX, sizeY);
-    private LifeGrid savedGrid = lg;
+    private int sizeX = 40;
+    private int sizeY = 32;
+    private Grid lg = new Grid(sizeX, sizeY);
 
-    public LifePanel() {
+    public GridPanel() {
         setPreferredSize(new Dimension(squareLen * sizeX, squareLen * sizeY));
         GridClickListener gcl = new GridClickListener();
         addMouseListener(gcl);
@@ -27,16 +28,32 @@ public class LifePanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         // draw background
-        g2.setColor(Color.WHITE);
+        g2.setColor(Color.LIGHT_GRAY);
         g2.fillRect(0, 0, lg.dimX * squareLen, lg.dimY * squareLen);
 
         // draw filled squares
-        g2.setColor(Color.BLUE);
+        g2.setColor(RED);
+        g2.fillRect(20 * squareLen, 10 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(21 * squareLen, 10 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(19 * squareLen, 11 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(22 * squareLen, 11 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(18 * squareLen, 12 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(23 * squareLen, 12 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(17 * squareLen, 13 * squareLen, squareLen, squareLen);          //łopatologiczny kod rysowania literki A na gridzie
+        g2.fillRect(24 * squareLen, 13 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(16 * squareLen, 14 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(25 * squareLen, 14 * squareLen, squareLen, squareLen);          //
+        g2.fillRect(16 * squareLen, 15 * squareLen, squareLen, 10*squareLen);//
+        g2.fillRect(25 * squareLen, 15 * squareLen, squareLen, 10*squareLen);//
+        g2.fillRect(17 * squareLen, 17 * squareLen, 8*squareLen, squareLen);  //
+
         for (int x = 0; x < lg.dimX; x++) {
             for (int y = 0; y < lg.dimY; y++) {
                 if (lg.getSquare(x, y)) {
+                    g2.setColor(Color.BLUE);
                     g2.fillRect(x * squareLen, y * squareLen, squareLen, squareLen);
                 }
+                //if(lg.getSquare(x, y) = RED)
             }
         }
     }
@@ -44,11 +61,8 @@ public class LifePanel extends JPanel {
 
     class GridClickListener extends MouseAdapter {
 
-        private int lastUpdatedX = 0;
-        private int lastUpdatedY = 0;
         private int gridX;
         private int gridY;
-        private boolean adding = true;
 
         @Override
         public void mousePressed(MouseEvent e) {
