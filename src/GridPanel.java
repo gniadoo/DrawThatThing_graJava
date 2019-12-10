@@ -4,12 +4,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import static java.awt.Color.RED;
 
 public class GridPanel extends JPanel {
-
     private int squareLen = 20;
     private int sizeX = 40;
     private int sizeY = 32;
@@ -31,34 +30,29 @@ public class GridPanel extends JPanel {
         g2.setColor(Color.LIGHT_GRAY);
         g2.fillRect(0, 0, lg.dimX * squareLen, lg.dimY * squareLen);
 
-        // draw filled squares
-        g2.setColor(RED);
-        g2.fillRect(20 * squareLen, 10 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(21 * squareLen, 10 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(19 * squareLen, 11 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(22 * squareLen, 11 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(18 * squareLen, 12 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(23 * squareLen, 12 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(17 * squareLen, 13 * squareLen, squareLen, squareLen);          //łopatologiczny kod rysowania literki A na gridzie
-        g2.fillRect(24 * squareLen, 13 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(16 * squareLen, 14 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(25 * squareLen, 14 * squareLen, squareLen, squareLen);          //
-        g2.fillRect(16 * squareLen, 15 * squareLen, squareLen, 10*squareLen);//
-        g2.fillRect(25 * squareLen, 15 * squareLen, squareLen, 10*squareLen);//
-        g2.fillRect(17 * squareLen, 17 * squareLen, 8*squareLen, squareLen);  //
+        for (int x = 0; x < lg.dimX; x++) {
+            for (int y = 0; y < lg.dimY; y++) {
+                if (lg.getSquare1(x, y)) {
+                    g2.setColor(Color.RED);
+                    g2.fillRect(x * squareLen, y * squareLen, squareLen, squareLen);
+                }
+            }
+        }
 
+        int p = 0;
         for (int x = 0; x < lg.dimX; x++) {
             for (int y = 0; y < lg.dimY; y++) {
                 if (lg.getSquare(x, y)) {
                     g2.setColor(Color.BLUE);
                     g2.fillRect(x * squareLen, y * squareLen, squareLen, squareLen);
                 }
-                //if(lg.getSquare(x, y) = RED)
+                if (lg.getSquare(x, y) != lg.getSquare1(x, y)) {
+                    p++;
+                }
             }
         }
+        if(p==0){System.out.println("Brawo udało ci sie!");}
     }
-
-
     class GridClickListener extends MouseAdapter {
 
         private int gridX;
@@ -86,4 +80,8 @@ public class GridPanel extends JPanel {
             gridY = e.getY() / squareLen;
         }
     }
+
 }
+
+
+

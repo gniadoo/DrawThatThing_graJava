@@ -9,7 +9,9 @@ import static java.awt.FlowLayout.CENTER;
 public class Menu extends JFrame{
 
     Game f2 = new Game();
-    public static void main(String[] args) { Menu a = new Menu();}
+    public static void main(String[] args) { Menu a = new Menu();
+        //System.out.println(GridPanel.p);
+    }
 
     public Menu() {
 

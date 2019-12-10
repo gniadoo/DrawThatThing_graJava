@@ -11,7 +11,7 @@ public class Game {
     private JButton menu;
 
     public Game() { buildGUI(); }
-    JFrame f = new JFrame("Life");
+    JFrame f = new JFrame("Draw that thing");
 
 
     final void buildGUI() {
