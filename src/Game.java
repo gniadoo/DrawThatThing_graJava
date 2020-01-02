@@ -5,17 +5,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Game {
 
+
+public class Game {
+    int siema;
     private GridPanel gp;
     private JButton menu;
-
-    public Game() { buildGUI(); }
-
+    public Game(int siemano) {
+        siema = siemano;
+        buildGUI();
+    }
     JFrame main_game = new JFrame("Draw that thing");
 
     final void buildGUI() {
-
         menu = new JButton("Menu");
 
         menu.addActionListener(new ActionListener() {
@@ -25,10 +27,10 @@ public class Game {
             }
         });
 
-        gp = new GridPanel();
 
         JPanel ctrlPanel = new JPanel(new GridLayout(1, 4));
         ctrlPanel.add(menu);
+        gp = new GridPanel(siema);
 
         main_game.add(gp, BorderLayout.CENTER);
         main_game.add(ctrlPanel, BorderLayout.SOUTH);

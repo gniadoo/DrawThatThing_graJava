@@ -29,7 +29,7 @@ public class Menu extends JFrame{
         game.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Game game_frame = new Game();
+                Game game_frame = new Game(1);
                 game_frame.setVisible(true);
             }
         });

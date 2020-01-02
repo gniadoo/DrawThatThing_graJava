@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 public class GridPanel extends JPanel {
@@ -11,9 +12,12 @@ public class GridPanel extends JPanel {
     private int sideLen = 20;
     private int sizeX = 40;
     private int sizeY = 32;
-    private Grid grd = new Grid(sizeX, sizeY);
+    boolean ewelona = true;
+    int n = 1;
+    private Grid grd = new Grid(sizeX, sizeY, n);
 
-    public GridPanel() {
+    public GridPanel(int n) {
+        grd = new Grid(sizeX, sizeY, n);
         setPreferredSize(new Dimension(sideLen * sizeX, sideLen * sizeY));
         GridClickListener gcl = new GridClickListener();
         addMouseListener(gcl);
@@ -45,11 +49,21 @@ public class GridPanel extends JPanel {
                     g2.fillRect(x * sideLen, y * sideLen, sideLen, sideLen);
                 }
                 if (grd.getSquarebyUser(x, y) != grd.getSquareforLetter(x, y)) {
+
                     p++;
+
                 }
             }
         }
-        if(p==0){System.out.println("Brawo udało ci sie!");}
+
+        if(p==0 && ewelona){
+            ewelona = false;
+            n=n+1;
+
+            Game game_frame = new Game(n);
+            game_frame.setVisible(true);
+
+        }
     }
 
     class GridClickListener extends MouseAdapter {
@@ -78,6 +92,7 @@ public class GridPanel extends JPanel {
             gridX = e.getX() / sideLen;
             gridY = e.getY() / sideLen;
         }
+
     }
 }
 
