@@ -2,28 +2,28 @@
 
 title __PROJEKTJPWP3's Class Diagram__\n
 
-  namespace  {
+
     class Game {
     }
-  }
+
   
 
-  namespace  {
+
     class Grid {
     }
-  }
+
   
 
-  namespace  {
+
     class GridPanel {
     }
-  }
+
   
 
-  namespace  {
+
     class Menu {
     }
-  }
+
   
 
   Game o-- GridPanel : gp
