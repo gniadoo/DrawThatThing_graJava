@@ -2,9 +2,9 @@ public class Grid {
 
     int dimX ; // wymiary
     int dimY ;
-    boolean[][] byUser; // tablica przechowująca elementu zamalowane przez gracza
-    boolean[][] letter_shape; // tablica przechowyjąca elementu zamalowane na podstawie szablonu
-    int letter_number;
+    boolean[][] byUser; // tablica przechowująca elementy zamalowane przez gracza
+    boolean[][] letter_shape; // tablica przechowująca elementy zamalowane na podstawie szablonu
+    public static int letter_number;
 
     public Grid(int x, int y, int temp) {
         dimX = x;
@@ -116,84 +116,84 @@ public class Grid {
                 letter_shape[21][25] = true;
                 letter_shape[20][25] = true;
                 break;
-//            case 3: // C
-//                letter_shape[23][11] = true;
-//                letter_shape[23][10] = true;
-//                letter_shape[22][9] = true;
-//                letter_shape[21][8] = true;
-//                letter_shape[20][8] = true;
-//                letter_shape[19][8] = true;
-//                letter_shape[18][8] = true;
-//                letter_shape[17][9] = true;
-//                letter_shape[16][10] = true;
-//                letter_shape[16][11] = true;
-//                letter_shape[16][12] = true;
-//                letter_shape[16][13] = true;
-//                letter_shape[16][14] = true;
-//                letter_shape[16][15] = true;
-//                letter_shape[16][16] = true;
-//                letter_shape[16][17] = true;
-//                letter_shape[16][18] = true;
-//                letter_shape[16][19] = true;
-//                letter_shape[16][20] = true;
-//                letter_shape[16][21] = true;
-//                letter_shape[16][22] = true;
-//                letter_shape[16][23] = true;
-//                letter_shape[17][24] = true;
-//                letter_shape[18][25] = true;
-//                letter_shape[19][25] = true;
-//                letter_shape[20][25] = true;
-//                letter_shape[21][25] = true;
-//                letter_shape[22][24] = true;
-//                letter_shape[23][23] = true;
-//                letter_shape[23][22] = true;
-//                break;
-//            case 4: // D
-//                letter_shape[15][9] = true;
-//                letter_shape[15][10] = true;
-//                letter_shape[15][11] = true;
-//                letter_shape[15][12] = true;
-//                letter_shape[15][13] = true;
-//                letter_shape[15][14] = true;
-//                letter_shape[15][15] = true;
-//                letter_shape[15][16] = true;
-//                letter_shape[15][17] = true;
-//                letter_shape[15][18] = true;
-//                letter_shape[15][19] = true;
-//                letter_shape[15][20] = true;
-//                letter_shape[15][21] = true;
-//                letter_shape[15][22] = true;
-//                letter_shape[15][23] = true;
-//                letter_shape[15][24] = true;
-//                letter_shape[15][25] = true;
-//                letter_shape[16][9] = true;
-//                letter_shape[17][9] = true;
-//                letter_shape[18][9] = true;
-//                letter_shape[19][9] = true;
-//                letter_shape[20][9] = true;
-//                letter_shape[21][9] = true;
-//                letter_shape[16][25] = true;
-//                letter_shape[17][25] = true;
-//                letter_shape[18][25] = true;
-//                letter_shape[19][25] = true;
-//                letter_shape[20][25] = true;
-//                letter_shape[21][25] = true;
-//                letter_shape[22][24] = true;
-//                letter_shape[22][10] = true;
-//                letter_shape[23][11] = true;
-//                letter_shape[23][12] = true;
-//                letter_shape[23][13] = true;
-//                letter_shape[23][14] = true;
-//                letter_shape[23][15] = true;
-//                letter_shape[23][16] = true;
-//                letter_shape[23][17] = true;
-//                letter_shape[23][18] = true;
-//                letter_shape[23][19] = true;
-//                letter_shape[23][20] = true;
-//                letter_shape[23][21] = true;
-//                letter_shape[23][22] = true;
-//                letter_shape[23][23] = true;
-//                break;
+            case 3: // C
+                letter_shape[23][11] = true;
+                letter_shape[23][10] = true;
+                letter_shape[22][9] = true;
+                letter_shape[21][8] = true;
+                letter_shape[20][8] = true;
+                letter_shape[19][8] = true;
+                letter_shape[18][8] = true;
+                letter_shape[17][9] = true;
+                letter_shape[16][10] = true;
+                letter_shape[16][11] = true;
+                letter_shape[16][12] = true;
+                letter_shape[16][13] = true;
+                letter_shape[16][14] = true;
+                letter_shape[16][15] = true;
+                letter_shape[16][16] = true;
+                letter_shape[16][17] = true;
+                letter_shape[16][18] = true;
+                letter_shape[16][19] = true;
+                letter_shape[16][20] = true;
+                letter_shape[16][21] = true;
+                letter_shape[16][22] = true;
+                letter_shape[16][23] = true;
+                letter_shape[17][24] = true;
+                letter_shape[18][25] = true;
+                letter_shape[19][25] = true;
+                letter_shape[20][25] = true;
+                letter_shape[21][25] = true;
+                letter_shape[22][24] = true;
+                letter_shape[23][23] = true;
+                letter_shape[23][22] = true;
+                break;
+            case 4: // D
+                letter_shape[15][9] = true;
+                letter_shape[15][10] = true;
+                letter_shape[15][11] = true;
+                letter_shape[15][12] = true;
+                letter_shape[15][13] = true;
+                letter_shape[15][14] = true;
+                letter_shape[15][15] = true;
+                letter_shape[15][16] = true;
+                letter_shape[15][17] = true;
+                letter_shape[15][18] = true;
+                letter_shape[15][19] = true;
+                letter_shape[15][20] = true;
+                letter_shape[15][21] = true;
+                letter_shape[15][22] = true;
+                letter_shape[15][23] = true;
+                letter_shape[15][24] = true;
+                letter_shape[15][25] = true;
+                letter_shape[16][9] = true;
+                letter_shape[17][9] = true;
+                letter_shape[18][9] = true;
+                letter_shape[19][9] = true;
+                letter_shape[20][9] = true;
+                letter_shape[21][9] = true;
+                letter_shape[16][25] = true;
+                letter_shape[17][25] = true;
+                letter_shape[18][25] = true;
+                letter_shape[19][25] = true;
+                letter_shape[20][25] = true;
+                letter_shape[21][25] = true;
+                letter_shape[22][24] = true;
+                letter_shape[22][10] = true;
+                letter_shape[23][11] = true;
+                letter_shape[23][12] = true;
+                letter_shape[23][13] = true;
+                letter_shape[23][14] = true;
+                letter_shape[23][15] = true;
+                letter_shape[23][16] = true;
+                letter_shape[23][17] = true;
+                letter_shape[23][18] = true;
+                letter_shape[23][19] = true;
+                letter_shape[23][20] = true;
+                letter_shape[23][21] = true;
+                letter_shape[23][22] = true;
+                letter_shape[23][23] = true;
+                break;
 //            case 5: // E
 //                letter_shape[15][9] = true;
 //                letter_shape[15][10] = true;
@@ -1064,7 +1064,40 @@ public class Grid {
 //                letter_shape[15][24] = true;
 //                break;
             default: // po odrysowaniu ostatniej literki zamknij program
-                System.exit(0);
+                letter_shape[19][9] = true;
+                letter_shape[19][10] = true;
+                letter_shape[19][11] = true;
+                letter_shape[19][12] = true;
+                letter_shape[19][13] = true;
+                letter_shape[19][14] = true;
+                letter_shape[19][15] = true;
+                letter_shape[19][16] = true;
+                letter_shape[19][17] = true;
+                letter_shape[19][18] = true;
+                letter_shape[19][19] = true;
+                letter_shape[19][20] = true;
+                letter_shape[19][21] = true;
+                letter_shape[19][22] = true;
+                letter_shape[19][23] = true;
+                letter_shape[19][24] = true;
+                letter_shape[19][25] = true;
+                letter_shape[19][26] = true;
+
+                letter_shape[20][25] = true;
+                letter_shape[20][24] = true;
+                letter_shape[21][24] = true;
+                letter_shape[21][23] = true;
+                letter_shape[22][23] = true;
+                letter_shape[22][22] = true;
+
+                letter_shape[18][25] = true;
+                letter_shape[18][24] = true;
+                letter_shape[17][24] = true;
+                letter_shape[17][23] = true;
+                letter_shape[16][23] = true;
+                letter_shape[16][22] = true;
+
+
                 break;
         }
     }

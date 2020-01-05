@@ -1,9 +1,12 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 public class GridPanel extends JPanel {
@@ -12,8 +15,9 @@ public class GridPanel extends JPanel {
     private int sizeX = 40; // szerokość gridu
     private int sizeY = 32; // wysokość gridu
     boolean if_next_letter = true; // zmienna zapewniająca przeskoczenie na następną literke po poprawnym odrysowaniu
-    public static int letter_number = 1; // numer kolejnej literki
-    private Grid grd;
+    boolean if_end = true; // zmiena zapobiegająca pojawieniu się kilku okienek podsumowujących po zakończeniu gry
+    public int letter_number = 1; // numer kolejnej literki
+    public Grid grd;
 
     public GridPanel(int letter_number) {
         grd = new Grid(sizeX, sizeY, letter_number);
@@ -21,6 +25,7 @@ public class GridPanel extends JPanel {
         GridClickListener gcl = new GridClickListener();
         addMouseListener(gcl);
         addMouseMotionListener(gcl);
+
     }
 
     @Override
@@ -46,20 +51,33 @@ public class GridPanel extends JPanel {
                 if (grd.getSquarebyUser(x, y)) {                                // pętla rysująca zamalowywująca elementu gridu wskazane przez gracza
                     g2.setColor(Color.BLACK);
                     g2.fillRect(x * sideLen, y * sideLen, sideLen, sideLen);
+
                 }
                 if (grd.getSquarebyUser(x, y) != grd.getSquareforLetter(x, y)) { // sprawdzanie czy kształt zadany pokrywa się z tym narysowanym przez gracza
                     p++;
                 }
+
             }
         }
 
-        if(p==0 && if_next_letter){
-            if_next_letter = false;
-            letter_number = letter_number +1;  // przeskakiwanie na nastepną literke jeśli kształt został odrysowany poprawnie
+         if(if_next_letter && letter_number >= 5) // sprawdzenie czy zostały już narysowane wszystkie litery
+            {
+                if(if_end) {
+                    End end_screen = null;
+                    try {
+                        end_screen = new End(Game.gameTime); // jeśli warunek spełniony to wyświetl ekran podsumowujący
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    end_screen.setVisible(true);
 
-            Game game_frame = new Game(letter_number);
-            game_frame.setVisible(true);
-        }
+                    if_end = false;
+                }
+
+        } else if(p==0 && letter_number<5){
+             letter_number = letter_number +1;  // przeskakiwanie na nastepną literke jeśli kształt został odrysowany poprawnie
+             grd = new Grid(sizeX, sizeY, letter_number);
+         }
     }
 
     class GridClickListener extends MouseAdapter {  // odczytywanie ruchów jakie gracz wykonał za pomocą myszy
@@ -90,6 +108,7 @@ public class GridPanel extends JPanel {
         }
 
     }
+
 }
 
 

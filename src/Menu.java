@@ -1,25 +1,24 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.sound.sampled.AudioInputStream;
 import javax.swing.*;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.*;
+import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.security.*;
+import java.nio.*;
+import java.util.*;
 
 
 public class Menu extends JFrame{
 
-    public static int gameTime = 0;
-    Timer myTimer = new Timer();
-    TimerTask task = new TimerTask() {     // czas trwania jedenj rozgrywki
-        @Override
-        public void run() {
-            gameTime = gameTime +1;
-            System.out.println(gameTime);
-        }
-    };
-
-    public static void main(String[] args) { Menu a = new Menu(); }
-
+    public static void main(String[] args) {
+        Menu a = new Menu();
+    }
 
     public Menu() {
 
@@ -41,9 +40,9 @@ public class Menu extends JFrame{
         game.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Game game_frame = new Game(1);
+                Game game_frame = new Game(1);   // tworzenie okienka rozgrywki
                 game_frame.setVisible(true);
-                myTimer.scheduleAtFixedRate(task,1000,1000); // rozpoczęcie pomiaru czasu
+                main_frame.setVisible(false);
             }
         });
 
@@ -52,7 +51,15 @@ public class Menu extends JFrame{
         ranking.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Ranking ranking_frame = new Ranking();
+
+                Ranking ranking_frame = null;     // tworzenie okienka z wynikami
+
+                try {
+                    ranking_frame = new Ranking();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+
                 ranking_frame.setVisible(true);
             }
         });
@@ -62,7 +69,7 @@ public class Menu extends JFrame{
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                System.exit(0);             // wyjście z gry
             }
         });
 
